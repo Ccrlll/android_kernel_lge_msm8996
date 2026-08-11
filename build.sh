@@ -67,9 +67,11 @@ clear
 sleep 3
 make_defconfig() {
 	mkdir -p ${OUT} && 
-    ${PWD}/scripts/kconfig/merge_config.sh -O ${OUT} \
-	${PWD}/arch/arm64/configs/vendor/lge/lge_msm8996_defconfig \
-	${PWD}/arch/arm64/configs/vendor/lge/vs995.config
+		${PWD}/scripts/kconfig/merge_config.sh -O ${OUT} \
+		${PWD}/arch/arm64/configs/msm-perf_defconfig \
+		${PWD}/arch/arm64/configs/vendor/lge/lge_msm8996_defconfig \
+		${PWD}/arch/arm64/configs/vendor/lge/lge_elsa_common.config \
+		${PWD}/arch/arm64/configs/vendor/lge/vs995.config 2>&1
 
 	make -s ARCH="${ARCH}" O="${OUT}" olddefconfig
 }
@@ -134,7 +136,7 @@ compile
 completion
 
 # Check for necessary files and call the function accordingly
-if [ $BUILD_TYPE -eq 2 ]; then
+if [ $BUILD_TYPE -eq 1 ]; then
     copy_and_zip "${OUTPUT}/Image.gz-dtb"
 else
     echo -e ${RED}"#### Images not found, Aborting... ####" ${NORMAL}

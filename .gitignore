@@ -124,3 +124,8 @@ android/configs/android-*.cfg
 #Ignoring Android.bp link file
 #
 Android.bp
+
+#
+# Out Directory - Auto Generated when building kernel
+#
+/out
