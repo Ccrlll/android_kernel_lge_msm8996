@@ -68,10 +68,9 @@ sleep 3
 make_defconfig() {
 	mkdir -p ${OUT} && 
 		${PWD}/scripts/kconfig/merge_config.sh -O ${OUT} \
-		${PWD}/arch/arm64/configs/msm-perf_defconfig \
 		${PWD}/arch/arm64/configs/vendor/lge/lge_msm8996_defconfig \
 		${PWD}/arch/arm64/configs/vendor/lge/lge_elsa_common.config \
-		${PWD}/arch/arm64/configs/vendor/lge/vs995.config 2>&1
+		${PWD}/arch/arm64/configs/vendor/lge/us996d.config
 
 	make -s ARCH="${ARCH}" O="${OUT}" olddefconfig
 }
